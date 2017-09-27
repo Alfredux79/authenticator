@@ -33,7 +33,7 @@ public class AuthController {
     ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Valid LoginRequest loginRequest) {
         log.debug("called auth controller {}", loginRequest);
         String token = jwtTokenProvider.authenticate(loginRequest.getLogin(), loginRequest.getPassword());
-        return new ResponseEntity<>(new AuthenticationResponse(token,""), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new AuthenticationResponse(token,"renew"), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/echo")
